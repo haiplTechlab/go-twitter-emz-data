@@ -268,9 +268,7 @@ func getMessage(token []byte) interface{} {
 // determined.
 func decodeMessage(token []byte, data map[string]interface{}) interface{} {
 	if hasPath(data, "retweet_count") {
-		tweet := new(Tweet)
-		json.Unmarshal(token, tweet)
-		return tweet
+		return data
 	} else if hasPath(data, "direct_message") {
 		notice := new(directMessageNotice)
 		json.Unmarshal(token, notice)
